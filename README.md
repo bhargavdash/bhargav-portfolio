@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bhargav Dash — Portfolio
 
-## Getting Started
+A single-page portfolio implemented from a Claude Design canvas. Dark theme,
+custom motion system (smooth scroll, custom cursor, scroll reveals, count-ups,
+animated bars, 3D card tilt), fully responsive, reduced-motion aware.
 
-First, run the development server:
+**Stack:** Next.js 16 (App Router) · TypeScript · Tailwind CSS v4 · Motion
+(Framer Motion) · Lenis. Fonts: Clash Display (Fontshare), DM Sans + JetBrains
+Mono (`next/font`).
+
+## Develop
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run dev      # http://localhost:3000
+npm run build    # production build (type-checks + lints)
+npm start        # serve the production build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Architecture
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+app/
+  layout.tsx     metadata/OG, fonts, smooth-scroll + cursor, Fontshare link
+  page.tsx       composes the sections
+  globals.css    design tokens (@theme), keyframes, grain, a11y, breakpoints
+components/       Nav, Hero, Work, FeaturedProject, ProjectGrid, Craft,
+                  Background, Contact, Footer, plus motion primitives
+                  (Reveal, Magnetic, CountUp, AnimatedBar, Cursor, SmoothScroll)
+lib/              site.ts (identity + links), projects.ts (work data),
+                  motion.ts (easings), hooks.ts (anchor scroll)
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Design tokens live in `app/globals.css` under `@theme`. The two responsive
+seams (560px / 920px) are mapped onto Tailwind's `sm` / `md` keys — keep using
+`sm:` and `md:` for layout so the breakpoint cascade stays correctly ordered.
 
-## Learn More
+## TODO — fill these in before publishing
 
-To learn more about Next.js, take a look at the following resources:
+All marked `PLACEHOLDER` in source:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Social / resume links** — `lib/site.ts` → `links.github`, `links.linkedin`,
+  `links.resume`. Drop your resume PDF in `public/` and point `resume` at it
+  (e.g. `/Bhargav-Dash-Resume.pdf`).
+- **Project links** — `lib/projects.ts` → each project's `live` / `caseStudy` /
+  `source` (currently `#`).
+- **Demo videos** — the two featured cards have a drop-zone placeholder for
+  `nomad-demo.mp4` / `helix-demo.mp4`. Wire up real video/embeds in
+  `components/FeaturedProject.tsx`.
+- **Domain / OG image** — `app/layout.tsx` → `metadataBase` (placeholder
+  `bhargavdash.com`). Add an OG image and reference it in `openGraph.images`.
+- **Clash Display** — loaded via Fontshare `<link>` in `app/layout.tsx`. For a
+  fully self-hosted, zero-external-request build, download the woff2 files and
+  switch to `next/font/local`.

@@ -1,26 +1,116 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* Fonts resolve to next/font CSS variables (set on <html>) + Fontshare Clash Display. */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+  --font-display: "Clash Display", var(--font-dm-sans), sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@theme {
+  /* Palette — lifted verbatim from the design canvas */
+  --color-bg: #0d0d12;
+  --color-surface: #13131a;
+  --color-surface-2: #1c1c26;
+  --color-surface-3: #1a1a24;
+  --color-ink: #f0f0f5;
+  --color-muted: #9090a8;
+  --color-faint: #555568;
+  --color-primary: #6c63ff;
+  --color-primary-2: #5a51f5;
+  --color-accent: #f97316;
+  --color-success: #22c55e;
+
+  /* Override the standard sm/md breakpoints to the design's responsive seams
+     (560px fine collapse, 920px major stack). Using core keys keeps Tailwind's
+     breakpoint cascade ordering correct (sm media query emitted before md). */
+  --breakpoint-sm: 35rem; /* 560px */
+  --breakpoint-md: 57.5rem; /* 920px */
+
+  --animate-pulse-dot: pulse-dot 2s ease-in-out infinite;
+  --animate-breathe: breathe 3s ease-in-out infinite;
+
+  @keyframes pulse-dot {
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.3;
+      transform: scale(0.7);
+    }
+  }
+
+  @keyframes breathe {
+    0%,
+    100% {
+      opacity: 0.35;
+    }
+    50% {
+      opacity: 0.58;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  html {
+    background: var(--color-bg);
+    /* Lenis drives smooth scroll; keep CSS smooth off to avoid double-easing. */
+    scroll-behavior: auto;
+  }
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgba(108, 99, 255, 0.32);
+    color: #fff;
+  }
+
+  /* Anchor offset for the fixed nav (fallback when JS/Lenis is off). */
+  section[id] {
+    scroll-margin-top: 64px;
+  }
+
+  /* Keyboard focus — invisible to mouse users, clear for keyboard users. */
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Film grain — fixed full-viewport noise, ported from the canvas. */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.06;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Hide the OS cursor only while the custom cursor is mounted (fine pointers). */
+html.custom-cursor,
+html.custom-cursor * {
+  cursor: none !important;
 }

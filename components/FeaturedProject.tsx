@@ -1,18 +1,11 @@
+import Image from "next/image";
 import type { FeaturedProject as Project } from "@/lib/projects";
 import Magnetic from "@/components/Magnetic";
-import { PlayIcon } from "@/components/icons";
-
-const STRIPES =
-  "repeating-linear-gradient(135deg,#15151d,#15151d 10px,#17171f 10px,#17171f 20px)";
 
 export default function FeaturedProject({ project }: { project: Project }) {
-  // Per-project identity colour (rgb), carried by an ambient glow, the hover
-  // border and the watermark — replaces the old left accent stripe.
   const tint = project.bar === "primary" ? "108,99,255" : "249,115,22";
   const hoverBorder =
     project.bar === "primary" ? "hover:border-primary/35" : "hover:border-accent/35";
-  const playBg =
-    project.play === "light" ? "bg-white/90 hover:bg-white" : "bg-accent/90 hover:bg-accent";
 
   return (
     <article
@@ -107,23 +100,16 @@ export default function FeaturedProject({ project }: { project: Project }) {
               {project.browserUrl}
             </div>
           </div>
-          <div
-            className="relative flex aspect-[16/10] items-center justify-center"
-            style={{ background: STRIPES }}
-          >
-            <button
-              type="button"
-              aria-label={`Play ${project.name} demo`}
-              className={`flex h-14 w-14 cursor-pointer items-center justify-center rounded-full border-none backdrop-blur-[6px] transition-transform duration-200 hover:scale-[1.08] ${playBg}`}
-            >
-              <PlayIcon size={18} className="ml-[3px] text-bg" />
-            </button>
-            <span className="absolute left-[14px] top-3 font-mono text-[10px] tracking-[0.08em] text-faint">
-              DROP DEMO VIDEO — {project.demoFile}
-            </span>
+          <div className="relative aspect-[16/10] overflow-hidden">
+            <Image
+              src={project.screenshot}
+              alt={`${project.name} product screenshot`}
+              fill
+              className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+              sizes="(max-width: 920px) 100vw, 50vw"
+            />
           </div>
         </div>
-        <div className="mt-3 font-mono text-xs text-faint">{project.demoMeta}</div>
       </div>
     </article>
   );

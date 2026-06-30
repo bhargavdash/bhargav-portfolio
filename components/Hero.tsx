@@ -10,15 +10,8 @@ import {
 import { site } from "@/lib/site";
 import { ease } from "@/lib/motion";
 import { useScrollTo } from "@/lib/hooks";
-import CountUp from "@/components/CountUp";
 import Magnetic from "@/components/Magnetic";
 import { CertBadge } from "@/components/icons";
-
-const toneClass: Record<string, string> = {
-  ink: "text-ink",
-  primary: "text-primary",
-  accent: "text-accent",
-};
 
 export default function Hero() {
   const reduced = useReducedMotion();
@@ -27,10 +20,10 @@ export default function Hero() {
   // 3D tilt for the profile card.
   const px = useMotionValue(0);
   const py = useMotionValue(0);
-  const sx = useSpring(px, { stiffness: 150, damping: 18, mass: 0.5 });
-  const sy = useSpring(py, { stiffness: 150, damping: 18, mass: 0.5 });
-  const rotateY = useTransform(sx, [-0.5, 0.5], [-8, 8]);
-  const rotateX = useTransform(sy, [-0.5, 0.5], [8, -8]);
+  const sx = useSpring(px, { stiffness: 200, damping: 15, mass: 0.4 });
+  const sy = useSpring(py, { stiffness: 200, damping: 15, mass: 0.4 });
+  const rotateY = useTransform(sx, [-0.5, 0.5], [-12, 12]);
+  const rotateX = useTransform(sy, [-0.5, 0.5], [12, -12]);
 
   const onCardMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (reduced) return;
@@ -183,34 +176,67 @@ export default function Hero() {
             style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
             className="rounded-[20px] border border-white/10 bg-[rgba(19,19,26,0.7)] p-7 backdrop-blur-[20px]"
           >
-            <div className="flex items-center gap-[14px]">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary font-display text-lg font-semibold text-white">
-                {site.initials}
+            {/* Code snippet — parallel agent pattern from nomad-agent */}
+            <div className="overflow-hidden rounded-[12px] border border-white/[0.08] bg-bg">
+              {/* File tab */}
+              <div className="flex items-center gap-[10px] border-b border-white/[0.06] px-4 py-[10px]">
+                <span className="h-[9px] w-[9px] rounded-full bg-white/10" />
+                <span className="font-mono text-[11px] text-faint">synthesizer.py</span>
               </div>
-              <div>
-                <div className="font-sans text-base font-medium text-ink">{site.name}</div>
-                <div className="font-sans text-[13px] text-faint">{site.role}</div>
+              {/* Code body */}
+              <pre className="overflow-x-auto px-4 py-[18px] font-mono text-[12px] leading-[1.85]">
+                <code>
+                  <span className="text-faint"># parallel research agents</span>{"\n"}
+                  <span className="text-primary-ink">results</span>
+                  <span className="text-muted"> = </span>
+                  <span className="text-primary-ink">await </span>
+                  <span className="text-ink">asyncio</span>
+                  <span className="text-muted">.</span>
+                  <span className="text-ink">gather</span>
+                  <span className="text-muted">{"("}</span>{"\n"}
+                  {"    "}
+                  <span className="text-muted">youtube</span>
+                  <span className="text-muted">.</span>
+                  <span className="text-ink">research</span>
+                  <span className="text-muted">{"(dest),"}</span>{"\n"}
+                  {"    "}
+                  <span className="text-muted">reddit</span>
+                  <span className="text-muted">.</span>
+                  <span className="text-ink">threads</span>
+                  <span className="text-muted">{"(dest),"}</span>{"\n"}
+                  {"    "}
+                  <span className="text-muted">geo</span>
+                  <span className="text-muted">.</span>
+                  <span className="text-ink">context</span>
+                  <span className="text-muted">{"(dest),"}</span>{"\n"}
+                  {"    "}
+                  <span className="text-muted">blogs</span>
+                  <span className="text-muted">.</span>
+                  <span className="text-ink">scrape</span>
+                  <span className="text-muted">{"(dest),"}</span>{"\n"}
+                  {"    "}
+                  <span className="text-muted">travel</span>
+                  <span className="text-muted">.</span>
+                  <span className="text-ink">fetch</span>
+                  <span className="text-muted">{"(dest),"}</span>{"\n"}
+                  <span className="text-muted">{")"}</span>{"\n"}
+                  <span className="text-primary-ink">return await </span>
+                  <span className="text-ink">synthesize</span>
+                  <span className="text-muted">{"(results)"}</span>
+                </code>
+              </pre>
+              {/* Footer attribution */}
+              <div className="flex items-center justify-between border-t border-white/[0.06] px-4 py-[9px]">
+                <span className="font-mono text-[10px] text-faint">nomad-agent</span>
+                <a
+                  href="https://github.com/bhargavdash/nomad-agent"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-mono text-[10px] text-primary-ink no-underline transition-opacity duration-200 hover:opacity-70"
+                >
+                  view source ↗
+                </a>
               </div>
-            </div>
-
-            <div className="mt-5 flex items-center gap-[9px]">
-              <span className="h-2 w-2 animate-pulse-dot rounded-full bg-success shadow-[0_0_8px_rgba(34,197,94,0.6)]" />
-              <span className="font-sans text-[13px] text-muted">Open to opportunities</span>
-            </div>
-
-            <div className="my-[22px] h-px bg-white/[0.08]" />
-
-            <div className="grid grid-cols-2 gap-x-[14px] gap-y-[18px]">
-              {site.stats.map((s) => (
-                <div key={s.label}>
-                  <div
-                    className={`font-display text-[28px] font-semibold leading-none ${toneClass[s.tone]}`}
-                  >
-                    <CountUp to={s.value} suffix={s.suffix} />
-                  </div>
-                  <div className="mt-[6px] font-mono text-[11px] text-faint">{s.label}</div>
-                </div>
-              ))}
             </div>
           </motion.div>
         </div>

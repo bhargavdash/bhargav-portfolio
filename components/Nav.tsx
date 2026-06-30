@@ -36,7 +36,7 @@ export default function Nav() {
             key={item.href}
             href={item.href}
             onClick={(e) => scrollTo(e, item.href)}
-            className="font-sans text-sm tracking-[0.06em] text-ink no-underline opacity-50 transition-opacity duration-200 hover:opacity-100"
+            className="font-sans text-sm tracking-[0.06em] text-ink no-underline opacity-70 transition-opacity duration-200 hover:opacity-100"
           >
             {item.label}
           </a>

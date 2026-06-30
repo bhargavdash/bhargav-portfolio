@@ -10,6 +10,7 @@ export interface FeaturedProject {
   desc: string;
   tech: string[];
   browserUrl: string;
+  screenshot: string;
   demoFile: string;
   demoMeta: string;
   reverse: boolean;
@@ -39,6 +40,7 @@ export const featuredProjects: FeaturedProject[] = [
     desc: "Multi-platform AI travel itinerary app. Five LangGraph research agents run in parallel — scraping YouTube, Reddit, and travel blogs — synthesize via Cerebras Qwen-3, and stream a day-by-day itinerary live. Built on React Native + Next.js + Node/Express + FastAPI + Supabase. Deployed production on Railway and Vercel.",
     tech: ["React Native", "Next.js", "LangGraph", "FastAPI", "Supabase", "Redis", "TypeScript"],
     browserUrl: "nomad.travel",
+    screenshot: "/nomad-ss.jpeg",
     demoFile: "nomad-demo.mp4",
     demoMeta: "Demo video · 2 min",
     reverse: false,
@@ -54,6 +56,7 @@ export const featuredProjects: FeaturedProject[] = [
     desc: "Claude.ai-style conversational data analyst. Natural language question → LLM-generated SQL → DuckDB execution → live-streaming charts with a visible reasoning trace. Bring-your-own-data: drag-drop CSV/XLSX → DuckDB ingest → chat against your own data. Every abstraction built by hand — no scaffolding. Hand-rolled SSE with schema-driven rendering (A2UI pattern).",
     tech: ["React", "Vite", "FastAPI", "DuckDB", "SSE", "Python", "TypeScript"],
     browserUrl: "helix.app",
+    screenshot: "/helix-ss.jpeg",
     demoFile: "helix-demo.mp4",
     demoMeta: "Demo video · 3 min",
     reverse: true,

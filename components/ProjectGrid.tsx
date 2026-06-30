@@ -19,7 +19,7 @@ export default function ProjectGrid() {
 
   return (
     <>
-      {/* Filter tabs */}
+      {/* Filter tabs — disabled until enough projects exist to populate multiple categories
       <div className="mb-7 flex flex-wrap gap-[10px]">
         {filters.map((f) => {
           const isActive = f.value === active;
@@ -40,6 +40,7 @@ export default function ProjectGrid() {
           );
         })}
       </div>
+      */}
 
       {/* Grid */}
       <div className="relative grid min-h-[300px] grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-5">

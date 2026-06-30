@@ -59,29 +59,20 @@ export default function Background() {
                 </div>
               </div>
               <p className="mt-[14px] font-sans text-[13.5px] leading-[1.6] text-muted">
-                Passed the official Anthropic architect certification covering agentic systems, MCP
-                server design, multi-agent orchestration, prompt engineering, and context
-                management. 5 domains, one of the first developers globally to earn this credential.
+                Official Anthropic certification covering agentic systems, MCP server design,
+                multi-agent orchestration, prompt engineering, and context management — 5 domains.
               </p>
               <div className="mt-[14px] font-mono text-xs text-accent/85">Anthropic · June 2026</div>
             </Reveal>
 
             <Reveal delay={100} className="rounded-[16px] border border-primary/20 bg-surface p-[22px]">
-              <div className="font-sans text-[15px] font-semibold text-ink">
-                Nomad — Live in Production
-              </div>
-              <div className="mt-[6px] font-sans text-[13px] leading-[1.5] text-muted">
-                Railway + Vercel, multi-platform.
-              </div>
-            </Reveal>
-
-            <Reveal delay={140} className="rounded-[16px] border border-primary/20 bg-surface p-[22px]">
-              <div className="font-sans text-[15px] font-semibold text-ink">
-                Helix — Phase B Complete
-              </div>
-              <div className="mt-[6px] font-sans text-[13px] leading-[1.5] text-muted">
-                Bring-your-own-data analytics, SSE, DuckDB.
-              </div>
+              <div className="font-sans text-[15px] font-semibold text-ink">What I'm looking for</div>
+              <p className="mt-[8px] font-sans text-[13px] leading-[1.6] text-muted">
+                A frontend or full-stack role where architecture decisions matter — not just
+                feature delivery. Teams that care about performance, testability, and
+                building things that last.
+              </p>
+              <div className="mt-[12px] font-mono text-xs text-primary-ink">India · open to remote</div>
             </Reveal>
           </div>
         </div>

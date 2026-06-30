@@ -33,7 +33,6 @@ const building = [
 
 const cell =
   "rounded-[16px] border border-white/[0.07] bg-surface transition-[border-color,background] duration-300";
-const eyebrow = "font-mono text-xs tracking-[0.04em] text-faint";
 
 export default function Craft() {
   return (
@@ -54,7 +53,6 @@ export default function Craft() {
         >
           {/* Core stack */}
           <div className={`${cell} p-[30px] sm:col-span-2 md:col-span-6 md:row-span-2`}>
-            <div className={`${eyebrow} mb-6`}>CORE STACK</div>
             <div className="flex flex-col gap-5">
               {coreStack.map((s) => (
                 <div key={s.name} className="flex items-start gap-4">
@@ -75,8 +73,8 @@ export default function Craft() {
           {/* MFE architecture — primary-tinted card (pairs with the
               accent-tinted cert card; replaces the old left accent stripe). */}
           <div className="relative rounded-[16px] border border-primary/20 bg-primary/[0.05] p-6 transition-[border-color] duration-300 md:col-span-3 md:row-span-1">
-            <div className="mb-[18px] font-mono text-xs tracking-[0.04em] text-primary-ink">
-              MICROFRONTEND ARCHITECTURE
+            <div className="mb-[18px] font-sans text-sm font-semibold text-primary-ink">
+              Microfrontend Architecture
             </div>
             <div className="flex items-center gap-[10px]">
               <span className="rounded-lg border border-white/10 bg-surface-2 px-[11px] py-2 font-mono text-[11px] text-ink">
@@ -121,7 +119,7 @@ export default function Craft() {
                 background: "radial-gradient(closest-side, rgba(108,99,255,0.14), transparent)",
               }}
             />
-            <div className={`relative ${eyebrow} mb-5`}>AI SYSTEMS</div>
+            <div className="relative mb-5 font-sans text-sm font-semibold text-ink">AI Systems</div>
             <div className="relative flex flex-col gap-4">
               {aiSystems.map((a) => (
                 <div key={a.name}>
@@ -137,7 +135,7 @@ export default function Craft() {
 
           {/* Backend capable */}
           <div className={`${cell} p-6 md:col-span-3 md:row-span-2`}>
-            <div className={`${eyebrow} mb-[18px]`}>BACKEND CAPABLE</div>
+            <div className="mb-[18px] font-sans text-sm font-semibold text-ink">Backend Capable</div>
             <div className="flex flex-wrap gap-2">
               {backendChips.map((b) => (
                 <span
@@ -158,7 +156,7 @@ export default function Craft() {
             className={`${cell} px-[30px] py-[26px] sm:col-span-2 md:col-span-6 md:row-span-1`}
           >
             <div className="mb-5 flex items-baseline justify-between">
-              <div className={eyebrow}>CURRENTLY BUILDING</div>
+              <div className="font-sans text-sm font-semibold text-ink">Currently Building</div>
               <div className="font-mono text-[11px] text-faint">2026 targets</div>
             </div>
             <div className="flex flex-col gap-4">

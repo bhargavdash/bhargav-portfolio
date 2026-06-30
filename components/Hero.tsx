@@ -92,7 +92,7 @@ export default function Hero() {
         <div className="w-full md:max-w-[680px] md:flex-1">
           <motion.div
             {...load(0)}
-            className="mb-[26px] font-mono text-[13px] tracking-[0.14em] text-accent"
+            className="mb-[26px] font-mono text-[12px] tracking-[0.08em] text-accent sm:text-[13px] sm:tracking-[0.14em]"
           >
             ↳ Frontend Engineer · {site.company}
           </motion.div>
@@ -128,7 +128,7 @@ export default function Hero() {
 
           <motion.div
             {...load(0.16)}
-            className="mt-[30px] font-mono text-sm tracking-[0.1em] text-faint"
+            className="mt-[30px] font-mono text-[13px] tracking-[0.04em] text-faint sm:text-sm sm:tracking-[0.1em]"
           >
             {site.tagline}
           </motion.div>
@@ -155,14 +155,14 @@ export default function Hero() {
 
           <motion.div
             {...load(0.32)}
-            className="mt-6 inline-flex items-center gap-[13px] rounded-full border-[1.5px] border-accent bg-accent/[0.08] px-[17px] py-[11px] shadow-[0_0_0_1px_rgba(249,115,22,0.15),0_4px_20px_rgba(249,115,22,0.08)]"
+            className="mt-6 inline-flex max-w-full flex-wrap items-center gap-x-[13px] gap-y-[6px] rounded-[20px] border-[1.5px] border-accent bg-accent/[0.08] px-[17px] py-[11px] shadow-[0_0_0_1px_rgba(249,115,22,0.15),0_4px_20px_rgba(249,115,22,0.08)]"
           >
             <CertBadge size={20} className="shrink-0 text-accent" />
             <span className="font-sans text-sm font-medium text-accent">
               Anthropic Claude Certified Architect
             </span>
-            <span className="h-[15px] w-px bg-accent/35" />
-            <span className="whitespace-nowrap font-mono text-xs text-accent/70">
+            <span className="hidden h-[15px] w-px bg-accent/35 sm:block" />
+            <span className="whitespace-nowrap font-mono text-xs text-accent/85">
               2026 · Verified ✓
             </span>
           </motion.div>

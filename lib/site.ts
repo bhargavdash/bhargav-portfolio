@@ -14,9 +14,9 @@ export const site = {
   metaDescription:
     "Frontend engineer building React, React Native, and module-federation systems — plus hand-rolled AI pipelines. React · TypeScript · MFE architecture.",
   links: {
-    github: "#", // PLACEHOLDER
-    linkedin: "#", // PLACEHOLDER
-    resume: "#", // PLACEHOLDER — e.g. "/Bhargav-Dash-Resume.pdf"
+    github: "https://github.com/bhargavdash",
+    linkedin: "https://www.linkedin.com/in/bhargav-dash-439369259/",
+    resume: "/Bhargav-Dash-Resume.pdf",
   },
   nav: [
     { label: "Work", href: "#work" },

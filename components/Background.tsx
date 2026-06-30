@@ -26,7 +26,7 @@ export default function Background() {
             <div className="relative pl-[30px]">
               <div className="absolute bottom-1 left-1 top-2 w-px bg-white/10" />
               <div className="absolute left-0 top-[6px] h-[9px] w-[9px] rounded-full bg-primary shadow-[0_0_0_4px_rgba(108,99,255,0.15)]" />
-              <div className="font-mono text-xs tracking-[0.04em] text-primary">
+              <div className="font-mono text-xs tracking-[0.04em] text-primary-ink">
                 2025 → PRESENT
               </div>
               <h3 className="mb-1 mt-[10px] font-sans text-[22px] font-semibold text-ink">
@@ -41,7 +41,7 @@ export default function Background() {
                     key={b}
                     className="flex gap-3 font-sans text-[15px] leading-[1.55] text-muted"
                   >
-                    <span className="shrink-0 text-primary">—</span>
+                    <span className="shrink-0 text-primary-ink">—</span>
                     {b}
                   </li>
                 ))}
@@ -63,7 +63,7 @@ export default function Background() {
                 server design, multi-agent orchestration, prompt engineering, and context
                 management. 5 domains, one of the first developers globally to earn this credential.
               </p>
-              <div className="mt-[14px] font-mono text-xs text-accent/70">Anthropic · June 2026</div>
+              <div className="mt-[14px] font-mono text-xs text-accent/85">Anthropic · June 2026</div>
             </Reveal>
 
             <Reveal delay={100} className="rounded-[16px] border border-primary/20 bg-surface p-[22px]">

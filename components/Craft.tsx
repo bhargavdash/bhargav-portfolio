@@ -6,7 +6,7 @@ const coreStack = [
   { abbr: "Re", name: "React 18", desc: "Fiber, hooks, concurrent rendering, performance patterns" },
   { abbr: "Ts", name: "TypeScript", desc: "Comfortable daily use, advancing toward advanced generics" },
   { abbr: "RN", name: "React Native", desc: "Expo SDK 55, navigation, Reanimated, cross-platform parity" },
-  { abbr: "Tw", name: "Tailwind v4", desc: "Design systems, utility-first, theme customization" },
+  { abbr: "Tw", name: "Tailwind + SCSS", desc: "Design systems, utility-first, theme customization, SCSS at scale" },
 ];
 
 const aiSystems = [
@@ -18,7 +18,7 @@ const aiSystems = [
 ];
 
 const backendChips = [
-  "Node.js", "Express v5", "Prisma v6", "PostgreSQL", "Supabase", "Redis", "Zod", "JWT",
+  "Node.js", "Express.js", "FastAPI", "PostgreSQL", "Supabase", "Redis", "Prisma ORM", "Docker", "AWS", "GCP",
 ];
 
 const certDomains = [
@@ -72,17 +72,17 @@ export default function Craft() {
             </div>
           </div>
 
-          {/* MFE architecture */}
-          <div className={`${cell} relative p-6 md:col-span-3 md:row-span-1`}>
-            <div className="absolute inset-y-[18px] left-0 w-[3px] rounded-r-[3px] bg-primary" />
-            <div className="mb-[18px] font-mono text-xs tracking-[0.04em] text-accent">
+          {/* MFE architecture — primary-tinted card (pairs with the
+              accent-tinted cert card; replaces the old left accent stripe). */}
+          <div className="relative rounded-[16px] border border-primary/20 bg-primary/[0.05] p-6 transition-[border-color] duration-300 md:col-span-3 md:row-span-1">
+            <div className="mb-[18px] font-mono text-xs tracking-[0.04em] text-primary-ink">
               MICROFRONTEND ARCHITECTURE
             </div>
             <div className="flex items-center gap-[10px]">
               <span className="rounded-lg border border-white/10 bg-surface-2 px-[11px] py-2 font-mono text-[11px] text-ink">
                 Shell
               </span>
-              <span className="text-base text-primary">→</span>
+              <span className="text-base text-primary-ink">→</span>
               <div className="flex flex-col gap-[7px]">
                 <span className="rounded-lg border border-white/10 bg-surface-2 px-[11px] py-[6px] font-mono text-[11px] text-muted">
                   Remote A
@@ -102,7 +102,7 @@ export default function Craft() {
             <div className="font-sans text-base font-semibold leading-[1.35] text-accent">
               Anthropic Claude Certified Architect
             </div>
-            <div className="mt-2 font-mono text-xs text-accent/70">2026 · All 5 domains passed</div>
+            <div className="mt-2 font-mono text-xs text-accent/85">2026 · All 5 domains passed</div>
             <div className="mt-[14px] font-mono text-[11px] leading-[1.9] text-faint">
               {certDomains.map((d) => (
                 <div key={d}>{d}</div>
@@ -130,7 +130,7 @@ export default function Craft() {
                 </div>
               ))}
             </div>
-            <div className="relative mt-5 font-mono text-[11px] text-primary">
+            <div className="relative mt-5 font-mono text-[11px] text-primary-ink">
               No scaffolding. No black boxes.
             </div>
           </div>

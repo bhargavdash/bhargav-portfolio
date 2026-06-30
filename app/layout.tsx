@@ -58,6 +58,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${dmSans.variable} ${jetbrainsMono.variable}`}>
       <body className="font-sans antialiased">
+        {/* Scroll reveals start at opacity:0 and rely on JS to animate in.
+            Without JS the observer never fires, so keep reveals visible. */}
+        <noscript>
+          <style>{`[data-reveal]{opacity:1!important;transform:none!important}`}</style>
+        </noscript>
         {/* Clash Display (display face) — self-hosting fallback noted in README. */}
         <link rel="preconnect" href="https://api.fontshare.com" />
         <link

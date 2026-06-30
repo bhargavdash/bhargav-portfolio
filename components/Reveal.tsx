@@ -24,6 +24,7 @@ export default function Reveal({
   return (
     <motion.div
       id={id}
+      data-reveal
       className={className}
       initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}

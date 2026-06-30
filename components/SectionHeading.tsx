@@ -16,7 +16,7 @@ export default function SectionHeading({
   return (
     <>
       <Reveal className="flex items-baseline gap-[18px]">
-        <span className="font-mono text-[15px] text-primary">{index} /</span>
+        <span className="font-mono text-[15px] text-primary-ink">{index} /</span>
         <h2 className="m-0 font-display text-[clamp(34px,5vw,52px)] font-semibold tracking-[-0.02em] text-ink">
           {title}
         </h2>

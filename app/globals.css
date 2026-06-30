@@ -15,9 +15,15 @@
   --color-surface-3: #1a1a24;
   --color-ink: #f0f0f5;
   --color-muted: #9090a8;
-  --color-faint: #555568;
+  /* Tertiary text. Lifted from #555568 (≈2.5:1, below AA) to clear WCAG AA on
+     bg/surface (≈4.7:1) while staying clearly dimmer than --muted. */
+  --color-faint: #7e7e94;
   --color-primary: #6c63ff;
   --color-primary-2: #5a51f5;
+  /* Lighter primary for small text on dark: --primary itself is only ≈4.5:1,
+     which fails AA at body sizes. Use for fills/borders → --primary; for small
+     primary-colored text → --primary-ink (≈6.3:1). */
+  --color-primary-ink: #8b84ff;
   --color-accent: #f97316;
   --color-success: #22c55e;
 
@@ -95,6 +101,16 @@
     pointer-events: none;
     opacity: 0.06;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+/* Scroll reveals animate from opacity:0. When printing, the IntersectionObserver
+   never fires for below-the-fold content, so force reveals to their resting state
+   — a saved PDF must never ship blank sections. */
+@media print {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
 

@@ -56,7 +56,7 @@ export default function ProjectGrid() {
             >
               <div className="flex items-center justify-between gap-3">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="rounded-full border border-white/[0.06] bg-surface-2 px-[9px] py-[5px] font-mono text-[10px] tracking-[0.03em] text-faint">
+                  <span className="rounded-full border border-white/[0.06] bg-surface-2 px-[9px] py-[5px] font-mono text-[10px] tracking-[0.03em] text-muted">
                     {p.catsLabel}
                   </span>
                   {p.isNew && (
@@ -92,7 +92,7 @@ export default function ProjectGrid() {
                 {p.techShown.map((t) => (
                   <span
                     key={t}
-                    className="rounded-full bg-surface-2 px-[10px] py-[5px] font-mono text-[11px] text-faint"
+                    className="rounded-full bg-surface-2 px-[10px] py-[5px] font-mono text-[11px] text-muted"
                   >
                     {t}
                   </span>
@@ -104,7 +104,7 @@ export default function ProjectGrid() {
                 )}
               </div>
 
-              <div className="translate-y-[6px] font-sans text-xs text-primary opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+              <div className="translate-y-[6px] font-sans text-xs text-primary-ink opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
                 View case study →
               </div>
             </motion.article>
@@ -117,7 +117,7 @@ export default function ProjectGrid() {
               className="flex min-h-[236px] animate-breathe flex-col items-center justify-center gap-3 rounded-[14px] border border-dashed border-white/10 p-6"
             >
               <PlusIcon size={24} className="text-faint" />
-              <span className="font-mono text-[13px] text-faint/65">Building next…</span>
+              <span className="font-mono text-[13px] text-faint">Building next…</span>
             </motion.div>
           )}
         </AnimatePresence>

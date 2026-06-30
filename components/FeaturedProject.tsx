@@ -6,31 +6,33 @@ const STRIPES =
   "repeating-linear-gradient(135deg,#15151d,#15151d 10px,#17171f 10px,#17171f 20px)";
 
 export default function FeaturedProject({ project }: { project: Project }) {
-  const barColor = project.bar === "primary" ? "bg-primary" : "bg-accent";
+  // Per-project identity colour (rgb), carried by an ambient glow, the hover
+  // border and the watermark — replaces the old left accent stripe.
+  const tint = project.bar === "primary" ? "108,99,255" : "249,115,22";
+  const hoverBorder =
+    project.bar === "primary" ? "hover:border-primary/35" : "hover:border-accent/35";
   const playBg =
     project.play === "light" ? "bg-white/90 hover:bg-white" : "bg-accent/90 hover:bg-accent";
 
   return (
     <article
-      className={`group relative flex flex-col gap-[30px] overflow-hidden rounded-[20px] border border-white/[0.07] bg-surface p-[clamp(28px,3.4vw,44px)] transition-[transform,border-color] duration-300 hover:-translate-y-[5px] hover:border-primary/30 md:gap-[clamp(28px,4vw,52px)] ${
+      className={`group relative flex flex-col gap-[30px] overflow-hidden rounded-[20px] border border-white/[0.07] bg-surface p-[clamp(28px,3.4vw,44px)] transition-[transform,border-color] duration-300 hover:-translate-y-[5px] ${hoverBorder} md:gap-[clamp(28px,4vw,52px)] ${
         project.reverse ? "md:flex-row-reverse" : "md:flex-row"
       }`}
     >
-      {/* Left accent bar */}
-      <div className={`absolute inset-y-0 left-0 w-[3px] ${barColor}`} />
-      {project.reverse && (
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-y-0 left-0 z-0 w-[42%]"
-          style={{
-            background: "linear-gradient(90deg, rgba(249,115,22,0.04), transparent)",
-          }}
-        />
-      )}
-      {/* Oversized index watermark */}
+      {/* Ambient identity glow, anchored to the content side */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -bottom-[44px] right-[26px] z-0 font-display text-[160px] font-semibold leading-none text-white/[0.035]"
+        className={`pointer-events-none absolute -top-20 z-0 h-72 w-72 rounded-full blur-md ${
+          project.reverse ? "-right-20" : "-left-20"
+        }`}
+        style={{ background: `radial-gradient(closest-side, rgba(${tint},0.12), transparent)` }}
+      />
+      {/* Oversized index watermark, tinted to the project colour */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -bottom-[44px] right-[26px] z-0 font-display text-[160px] font-semibold leading-none"
+        style={{ color: `rgba(${tint},0.06)` }}
       >
         {project.index}
       </div>
@@ -90,7 +92,7 @@ export default function FeaturedProject({ project }: { project: Project }) {
       {/* Media — browser mock with demo-video drop zone */}
       <div className="relative z-[2] order-first min-w-0 md:order-none md:flex-1">
         <div className="relative overflow-hidden rounded-[12px] border border-white/15 bg-surface-2 shadow-[0_24px_60px_rgba(0,0,0,0.4)]">
-          <div className="h-[3px] bg-accent" />
+          <div className="h-[3px]" style={{ background: `rgb(${tint})` }} />
           <div className="flex items-center gap-[14px] border-b border-white/[0.06] px-4 py-3">
             <div className="flex gap-[7px]">
               <span className="h-[11px] w-[11px] rounded-full bg-[#ff5f57]" />

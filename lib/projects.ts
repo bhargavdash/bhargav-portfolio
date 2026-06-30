@@ -16,7 +16,7 @@ export interface FeaturedProject {
   bar: "primary" | "accent";
   play: "light" | "accent";
   live: string;
-  caseStudy: string;
+  source: string;
 }
 
 export interface GridProject {
@@ -44,8 +44,8 @@ export const featuredProjects: FeaturedProject[] = [
     reverse: false,
     bar: "primary",
     play: "light",
-    live: "#", // PLACEHOLDER
-    caseStudy: "#", // PLACEHOLDER
+    live: "https://nomad-web-ten.vercel.app",
+    source: "https://github.com/bhargavdash/nomad-web",
   },
   {
     index: "02",
@@ -59,8 +59,8 @@ export const featuredProjects: FeaturedProject[] = [
     reverse: true,
     bar: "accent",
     play: "accent",
-    live: "#", // PLACEHOLDER
-    caseStudy: "#", // PLACEHOLDER
+    live: "https://analytics-dashboard-ui-six.vercel.app",
+    source: "https://github.com/bhargavdash/analytics-dashboard-ui",
   },
 ];
 
@@ -85,28 +85,6 @@ export const gridProjects: GridProject[] = [
     techShown: ["React", "FastAPI", "PyTorch", "Docker", "GCP"],
     techMore: 1,
     source: "#",
-    live: "#",
-  },
-  {
-    name: "Developer Coding Gym",
-    catsLabel: "Tools · Frontend",
-    cats: ["tools", "frontend"],
-    isNew: false,
-    desc: "Muscle-memory practice platform for the AI era — timed drills, pattern recall, and interview simulations with no autocomplete. The exact thing that atrophies when AI writes your code. In design.",
-    techShown: ["React", "TypeScript", "CodeMirror", "Node.js"],
-    techMore: 2,
-    source: "#",
-    live: "#",
-  },
-  {
-    name: "This Portfolio",
-    catsLabel: "Frontend",
-    cats: ["frontend"],
-    isNew: false,
-    desc: "The site you're reading — hand-built motion system, 3D tilt card, custom cursor, scroll choreography, zero UI kit.",
-    techShown: ["Next.js", "Tailwind", "Framer Motion", "TypeScript"],
-    techMore: 0,
-    source: "https://github.com/bhargavdash/bhargav-portfolio",
     live: "#",
   },
 ];

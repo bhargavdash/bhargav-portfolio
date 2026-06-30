@@ -73,6 +73,8 @@ export default function FeaturedProject({ project }: { project: Project }) {
           <Magnetic>
             <a
               href={project.live}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex h-[42px] items-center gap-2 rounded-full bg-primary px-5 font-sans text-sm font-medium text-white no-underline transition-[background,transform] duration-200 hover:-translate-y-0.5 hover:bg-primary-2"
             >
               Live Demo →
@@ -80,10 +82,12 @@ export default function FeaturedProject({ project }: { project: Project }) {
           </Magnetic>
           <Magnetic>
             <a
-              href={project.caseStudy}
+              href={project.source}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex h-[42px] items-center gap-2 rounded-full border border-white/[0.14] bg-transparent px-5 font-sans text-sm font-medium text-ink no-underline transition-[border-color,transform] duration-200 hover:-translate-y-0.5 hover:border-primary/50"
             >
-              Case Study ↗
+              GitHub ↗
             </a>
           </Magnetic>
         </div>

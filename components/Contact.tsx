@@ -61,18 +61,24 @@ export default function Contact() {
         <div className="mt-11 flex flex-wrap justify-center gap-10">
           <a
             href={site.links.github}
+            target="_blank"
+            rel="noopener noreferrer"
             className="font-sans text-sm text-muted no-underline transition-colors duration-200 hover:text-ink"
           >
             GitHub ↗
           </a>
           <a
             href={site.links.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
             className="font-sans text-sm text-muted no-underline transition-colors duration-200 hover:text-ink"
           >
             LinkedIn ↗
           </a>
           <a
             href={site.links.resume}
+            target="_blank"
+            rel="noopener noreferrer"
             className="font-sans text-sm text-muted no-underline transition-colors duration-200 hover:text-ink"
           >
             Resume PDF ↗

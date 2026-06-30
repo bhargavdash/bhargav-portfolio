@@ -69,6 +69,8 @@ export default function ProjectGrid() {
                   <a
                     href={p.source}
                     aria-label={`${p.name} source`}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex text-faint transition-colors duration-200 hover:text-ink"
                   >
                     <SourceIcon />
@@ -76,6 +78,8 @@ export default function ProjectGrid() {
                   <a
                     href={p.live}
                     aria-label={`${p.name} live`}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex text-faint transition-colors duration-200 hover:text-ink"
                   >
                     <ExternalArrow />
@@ -105,7 +109,7 @@ export default function ProjectGrid() {
               </div>
 
               <div className="translate-y-[6px] font-sans text-xs text-primary-ink opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                View case study →
+                View on GitHub →
               </div>
             </motion.article>
           ))}

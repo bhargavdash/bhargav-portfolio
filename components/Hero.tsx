@@ -146,6 +146,8 @@ export default function Hero() {
             <Magnetic>
               <a
                 href={site.links.resume}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex h-11 items-center justify-center gap-[9px] rounded-full border border-primary/55 bg-transparent px-6 font-sans text-[15px] font-medium text-ink no-underline transition-[border-color,background,transform] duration-200 hover:-translate-y-0.5 hover:border-primary hover:bg-primary/[0.08]"
               >
                 Read Resume ↗
